@@ -1,0 +1,38 @@
+package demo.learn;
+
+public class Student {
+    String name;
+    int age;
+    static String room;
+
+    public static String getRoom() {
+        return room;
+    }
+
+    public static void setRoom(String room) {
+        Student.room = room;
+    }
+
+    public Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+
+}
