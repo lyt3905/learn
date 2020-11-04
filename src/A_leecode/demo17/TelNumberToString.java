@@ -1,17 +1,54 @@
 package A_leecode.demo17;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class TelNumberToString {
     public static void main(String[] args) {
-        List<String> strings = new Solution().letterCombinations("2587");
+        List<String> strings = new Solution().letterCombinations("23");
         System.out.println("strings = " + strings);
 
     }
 }
+class Solution {
+    public List<String> letterCombinations(String digits) {
+        List<String> combinations = new ArrayList<String>();
+        if (digits.length() == 0) {
+            return combinations;
+        }
+        Map<Character, String> phoneMap = new HashMap<Character, String>() {
+            {
+            put('2', "abc");
+            put('3', "def");
+            put('4', "ghi");
+            put('5', "jkl");
+            put('6', "mno");
+            put('7', "pqrs");
+            put('8', "tuv");
+            put('9', "wxyz");
+        }};
+        //combination 组合的结果//键值对//   数字      初始下表
+        backtrack(combinations, phoneMap, digits, 0, new StringBuffer());
+        return combinations;
+    }
+
+    public void backtrack(List<String> combinations, Map<Character, String> phoneMap, String digits, int index, StringBuffer combination) {
+        if (index == digits.length()) {
+            combinations.add(combination.toString());
+        } else {
+            char digit = digits.charAt(index);
+            String letters = phoneMap.get(digit);
+            int lettersCount = letters.length();
+            for (int i = 0; i < lettersCount; i++) {
+                combination.append(letters.charAt(i));
+                backtrack(combinations, phoneMap, digits, index + 1, combination);
+                combination.deleteCharAt(index);
+            }
+
+        }
+    }
+}
+
+/*
 class Solution {
     HashMap<String,String> hp;
     Solution(){
@@ -27,7 +64,7 @@ class Solution {
     }
     public List<String> letterCombinations(String digits) {
 
-    return back(digits);
+        return back(digits);
 
     }
     public List<String> back(String s) {
@@ -66,4 +103,4 @@ class Solution {
             return result;
         }
     }
-}
+}*/
