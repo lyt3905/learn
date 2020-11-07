@@ -13,8 +13,9 @@ public class coinChange {
 
     }
 }
+
 //自底想上  数组
-/*class Solution {
+class Solution {
 
     public int coinChange(int[] coins, int amount) {
         int[] dp=new int[amount+1];
@@ -35,7 +36,7 @@ public class coinChange {
             return -1;
         else  return dp[amount];
     }
-}*/
+}
 //带备忘录的  time:263
 // 40  35847
 /*class Solution {
